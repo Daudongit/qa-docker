@@ -22,6 +22,14 @@ RUN yum install google-chrome-stable_current_x86_64.rpm -y
 
 # install selenium
 RUN /bin/pip3.6 install selenium
+RUN /bin/pip3.6 install psutil
+RUN /bin/pip3.6 install yagmail
+RUN /bin/pip3.6 install configparser
+RUN /bin/pip3.6 install pytest
+RUN /bin/pip3.6 install pytest-xdist
+RUN /bin/pip3.6 install pytest-html
+RUN /bin/pip3.6 install beautifulsoup4
+RUN /bin/pip3.6 install lxml
 
 # download chromedriver
 RUN mkdir /opt/chrome
@@ -33,5 +41,6 @@ COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
 # copy the testing python script
-COPY test/sample.py .
+COPY test/qa/ .
+# COPY test/sample.py .
 CMD ["/start.sh"]
