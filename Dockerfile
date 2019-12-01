@@ -28,6 +28,10 @@ RUN mkdir /opt/chrome
 RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip -d /opt/chrome
 
+# File and Folder
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # copy the testing python script
 COPY test/sample.py .
 CMD ["/start.sh"]
