@@ -1,2 +1,2 @@
 #!/bin/bash
-python -W ignore sample.py
+python3.6 -W ignore sample.py
