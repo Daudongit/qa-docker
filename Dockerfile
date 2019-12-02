@@ -22,7 +22,7 @@ RUN yum install google-chrome-stable_current_x86_64.rpm -y
 
 # install selenium
 RUN /bin/pip3.6 install selenium
-RUN /bin/pip3.6 install psutil==5.6.3
+# RUN /bin/pip3.6 install psutil==5.6.3
 RUN /bin/pip3.6 install yagmail
 RUN /bin/pip3.6 install configparser
 RUN /bin/pip3.6 install pytest
@@ -40,8 +40,8 @@ RUN unzip chromedriver_linux64.zip -d /opt/chrome
 COPY test/qa/ .
 
 # File and Folder
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
 
 # COPY test/sample.py .
-CMD ["/start.sh"]
+CMD ["/startup.sh"]
