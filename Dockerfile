@@ -37,11 +37,11 @@ RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux6
 RUN unzip chromedriver_linux64.zip -d /opt/chrome
 
 # copy the testing python script
-COPY test/qa/ .
+# COPY test/qa/ .
 
 # File and Folder
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
 
-# COPY test/sample.py .
+COPY test/sample.py .
 CMD ["/startup.sh"]
