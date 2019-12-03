@@ -40,7 +40,7 @@ RUN unzip chromedriver_linux64.zip -d /opt/chrome
 RUN mkdir /qa/
 
 #create environment variables
-ENV SITE=linuxjobber
+ENV WEBSITE=linuxjobber
 ENV ENVIRONMENT=int
 
 # copy the testing python script

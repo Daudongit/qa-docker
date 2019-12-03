@@ -22,7 +22,7 @@ def get_logger(log_name):
     return logger
 
 def send_email_ses(
-    environment, recipients,site
+    environment, recipients,site,
     username=parser.get('mail', 'username'),
     password=parser.get('mail', 'password'),
     from_address=parser.get('mail', 'sender')):
