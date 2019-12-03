@@ -13,8 +13,8 @@ RUN yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum -y update
 RUN yum -y install python36u \
                    python36u-pip \
-                   python36u-devel 
-
+                   python36u-devel \
+                   git
 
 # install headless chrome
 RUN curl -O  https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
@@ -22,8 +22,8 @@ RUN yum install google-chrome-stable_current_x86_64.rpm -y
 
 # install selenium
 RUN /bin/pip3.6 install selenium
-# RUN /bin/pip3.6 install psutil==5.6.3
-RUN /bin/pip3.6 install yagmail
+# # RUN /bin/pip3.6 install psutil==5.6.3
+# RUN /bin/pip3.6 install yagmail
 RUN /bin/pip3.6 install configparser
 RUN /bin/pip3.6 install pytest
 RUN /bin/pip3.6 install pytest-xdist
@@ -36,12 +36,24 @@ RUN mkdir /opt/chrome
 RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip -d /opt/chrome
 
-# copy the testing python script
-# COPY test/qa/ .
-
 # File and Folder
-COPY startup.sh /startup.sh
-RUN chmod +x /startup.sh
+RUN mkdir /qa/
 
-COPY test/sample.py .
-CMD ["/startup.sh"]
+#create environment variables
+ENV SITE=linuxjobber
+ENV ENVIRONMENT=int
+
+# copy the testing python script
+COPY test/qa/ /qa/
+
+#copy setup files
+COPY setup/ /qa/
+
+#make start.sh executable
+RUN chmod +x /qa/starts.sh
+
+#set working directory
+WORKDIR /qa/
+
+CMD ./starts.sh
+# CMD ["/starts.sh"]
