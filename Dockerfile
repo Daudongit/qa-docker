@@ -34,7 +34,8 @@ RUN /bin/pip3.6 install lxml
 # download chromedriver
 RUN mkdir /opt/chrome
 RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip -d /opt/chrome
+RUN unzip chromedriver_linux64.zip -d /bin
+# RUN unzip chromedriver_linux64.zip -d /opt/chrome
 
 # File and Folder
 RUN mkdir /qa/
