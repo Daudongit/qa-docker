@@ -23,7 +23,7 @@ RUN yum install google-chrome-stable_current_x86_64.rpm -y
 # install selenium
 RUN /bin/pip3.6 install selenium
 # # RUN /bin/pip3.6 install psutil==5.6.3
-# RUN /bin/pip3.6 install yagmail
+RUN /bin/pip3.6 install yagmail
 RUN /bin/pip3.6 install configparser
 RUN /bin/pip3.6 install pytest
 RUN /bin/pip3.6 install pytest-xdist
