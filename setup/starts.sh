@@ -1,6 +1,6 @@
 #!/bin/bash
 # Set environment using EXPORT ENVIRONMENT == "int" or "stage"
-if[$WEBSITE = 'chatscrum'] then
+if [$WEBSITE = 'chatscrum'] then
     git checkout chatscrumqa
 fi
 
