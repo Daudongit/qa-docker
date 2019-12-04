@@ -1,0 +1,13 @@
+[site_to_test]
+url : http://environment.website.com
+
+[config]
+debug : false
+browser : chrome
+;browser:firefox
+
+[mail]
+username : username-here
+password : password-here
+recipients : recipient1@mail.com,recipient2@mail.com,...
+sender : sender@mail.com

@@ -1,5 +1,9 @@
 #!/bin/bash
 # Set environment using EXPORT ENVIRONMENT == "int" or "stage"
+if[$WEBSITE = 'chatscrum'] then
+    git checkout chatscrumqa
+fi
+
 /bin/pip3.6 install -r requirements.txt
 echo "Running test for $ENVIRONMENT on $WEBSITE"
 sed -i "s/environment/$ENVIRONMENT/g" settings.ini
