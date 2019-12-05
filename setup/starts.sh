@@ -7,7 +7,7 @@ echo "*********** Testing $WEBSITE | $STAGE ***********************"
 sed -i "s/environment/$STAGE/g" settings.ini
 sed -i "s/website/$WEBSITE/g" settings.ini
 echo "********** Currently testing  http://$STAGE.$WEBSITE.com *****"
-pytest --mail-linuxjobber=True
+pytest -n 4 --maillinuxjobber=True -q --disable-warnings -s || true
 echo "*********** Sending mail after test ***************************"
 #     pytest -n 4 --html=report-$STAGE-$WEBSITE.html --self-contained-html -q --disable-warnings --tb=line -s || true
 #     echo "Sending mail after test"

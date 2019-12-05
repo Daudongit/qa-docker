@@ -1,4 +1,3 @@
-
 from email.mime.multipart import MIMEMultipart
 from configparser import ConfigParser
 from email.mime.text import MIMEText
@@ -12,13 +11,12 @@ execution_date = "Today"
 
 def pytest_addoption(parser):
     parser.addoption(
-        '--mail-linuxjobber',
+        '--maillinuxjobber',
         action='store',
-        dest='mail-linuxjobber',
+        dest='maillinuxjobber',
         default='False',
         help='Test mail to liuxjobber'
     )
-
 
 
 def pytest_sessionstart(session):
@@ -42,11 +40,11 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     test_info['execution_date'] = execution_date
     test_info['elapsed_time'] = duration
 
-    if config.option.mail-linuxjobber == "True":
+    if config.option.maillinuxjobber == "True":
         send_email(test_info)
 
 def send_email(test_info):
-    server = smtplib.SMTP(smtp)
+    server = smtplib.SMTP('email-smtp.us-west-2.amazonaws.com', 587)
     config = _get_param()
     recipient_list = config['recipient_list']
     from_user = config['sender']
@@ -55,8 +53,8 @@ def send_email(test_info):
     msg['From'] = from_user
     msg['To'] = recipient_list
 
-    msg.add_header('Content-Type', 'text/html')
-    email_content = _get_email_content(test_info)
+    # msg.add_header('Content-Type', 'text/html')
+    email_content = _get_email_content(test_info,config['org'])
     msg.attach(MIMEText(email_content, 'html'))
 
     server.starttls()
@@ -78,7 +76,7 @@ def _get_param():
         'org':'Linuxjobber'
     }
 
-def _get_email_content(test_info):
+def _get_email_content(test_info,organization):
     return """
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -217,7 +215,7 @@ def _get_email_content(test_info):
         </div>
     </body>
     </html>
-    """ % ( test_info['org'],test_info['total'],test_info['passed'],test_info['failed'],
+    """ % ( organization,test_info['total'],test_info['passed'],test_info['failed'],
             test_info['skipped'],test_info['error'],test_info['xpassed'],
             test_info['xfailed'],test_info['percentage'],test_info['execution_date'],
             platform.uname()[1], platform.uname()[0],test_info['elapsed_time'])
