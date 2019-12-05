@@ -11,6 +11,7 @@ Dockerize qa template for selenium testing
 ### setup
 
 * create settings.ini file in setup folder(use settings.ini.example as template)
+* create test folder
 * clone the qa repository to test folder(with a parent folder name qa)
 
 ### step
