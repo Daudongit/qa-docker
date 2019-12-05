@@ -5,3 +5,14 @@ smtp=email-smtp.us-west-2.amazonaws.com
 subject=Test Notification:
 org=Linuxjobber
 send=True
+
+
+sudo docker run \
+    -e "uname=AKIAZXEAAGO74ZR4R3EJ" \
+    -e "pwd=BGjZxz+IpXuccMnsH5qV5VYt9khkCLzwuNf0gVNerray" \
+    -e "to=daudonmail@gmail.com" \
+    -e "smtp=email-smtp.us-west-2.amazonaws.com" \
+    -e "subject=TestNotification" \
+    -e "org=Linuxjobber" \
+    -e "send=True" \
+    --name test ltest  

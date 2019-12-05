@@ -5,8 +5,7 @@ from configparser import ConfigParser
 from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
-from utils import send_email_ses, get_parser
-# from utils import send_email_ses
+
 
 parser = ConfigParser()
 parser.read('settings.ini')
@@ -63,7 +62,6 @@ def send():
     else:
         environment = sys.argv[1]
         site = sys.argv[2]
-        parser = get_parser()
         recipient_list = parser.get('mail', 'recipients')
         send_email_ses(
             environment,recipient_list,site

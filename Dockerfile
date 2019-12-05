@@ -35,14 +35,13 @@ RUN /bin/pip3.6 install lxml
 RUN mkdir /opt/chrome
 RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip -d /bin
-# RUN unzip chromedriver_linux64.zip -d /opt/chrome
 
 # File and Folder
 RUN mkdir /qa/
 
 #create environment variables
 ENV WEBSITE=linuxjobber
-ENV ENVIRONMENT=int
+ENV STAGE=int
 
 # copy the testing python script
 COPY test/qa/ /qa/
@@ -57,4 +56,3 @@ RUN chmod +x /qa/starts.sh
 WORKDIR /qa/
 
 CMD ./starts.sh
-# CMD ["/starts.sh"]
