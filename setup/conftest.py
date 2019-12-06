@@ -131,8 +131,7 @@ def _get_email_content(test_info,organization):
                 <tr class="top">
                     <td colspan="2">
                         <table>
-                            <tr>
-                                <td></td>
+                            <tr style="text-align:center">
                                 <td style="text-align:center">
                                     <h1>%s</h1>
                                 </td>
