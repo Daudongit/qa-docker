@@ -21,6 +21,6 @@ docker build -t your-image-tag-here your-directory-path-here
 ```
 step 2: create a container to run the test
 ```
-docker run [-e "ENVIRONMENT=int|stage"] [-e "WESITE=linuxjobber|chatscrum"] --name your-container-name your-image-tag-here
+docker run [-e "STAGE=int|stage"] [-e "WESITE=linuxjobber|chatscrum"] --name your-container-name your-image-tag-here
 ```
-Note from the above command if environment variable ENVIRONMENT is not specify int will be use and if WEBSITE is not specify linuxjobber will be use
+Note from the above command if environment variable STAGE is not specify int will be use and if WEBSITE is not specify linuxjobber will be use

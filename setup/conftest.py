@@ -49,7 +49,8 @@ def send_email(test_info):
     recipient_list = config['recipient_list']
     from_user = config['sender']
     msg = MIMEMultipart()
-    msg['Subject'] = 'Test Result of:'+config['tested_site']+' as of '+test_info['execution_date']
+    subj = 'Test Result of:'+config['tested_site']+' as of '+test_info['execution_date']
+    msg['Subject'] = subj
     msg['From'] = from_user
     msg['To'] = recipient_list
 
@@ -132,7 +133,7 @@ def _get_email_content(test_info,organization):
                         <table>
                             <tr>
                                 <td></td>
-                                <td style="text-align:middle">
+                                <td style="text-align:center">
                                     <h1>%s</h1>
                                 </td>
                             </tr>

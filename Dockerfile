@@ -50,9 +50,9 @@ COPY test/qa/ /qa/
 COPY setup/ /qa/
 
 #make start.sh executable
-RUN chmod +x /qa/starts.sh
+RUN chmod +x /qa/startup.sh
 
 #set working directory
 WORKDIR /qa/
 
-CMD ./starts.sh
+CMD ./startup.sh
