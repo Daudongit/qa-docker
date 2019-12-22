@@ -1,16 +1,22 @@
 #!/bin/bash
 
-WEBSITE=$1
+WEBSITE="url:${1:-"https://int.linuxjobber.com"}"
+IMAGE=${2:-"qaserver"}
+# CONTAINER="${WEBSITE/"url:https://"/""}" 
+# CONTAINER="${CONTAINER//"."/""}" 
+CONTAINER=$(echo "$WEBSITE"|sed 's/url:https:\/\///g')
+# CONTAINER=$(echo "$CONTAINER"|sed 's/.//g')
 
-sed -i "s/website/$WEBSITE/g" setup/settings.ini
+sed -i "/url/c $WEBSITE" setup/settings.ini
+# find $(pwd)/setup/ -name '*.ini' -print0 | xargs -0 sed -i "s/website/$WEBSITE/g"
 
 # sudo docker container create 
-docker create  --name qa-test qa-s
+docker rm $CONTAINER -f || echo "No previous container" && docker create  --name $CONTAINER $IMAGE
 
-docker cp $(pwd)/test/qa/. qa-test:/qa
+docker cp $(pwd)/test/qa/. $CONTAINER:/qa
 
-docker cp $(pwd)/setup/settings.ini qa-test:/qa/settings.ini
+docker cp $(pwd)/setup/settings.ini $CONTAINER:/qa/settings.ini
 
-docker start qa-test 
+docker start $CONTAINER 
 
-docker exec  qa-test echo "********** Currently testing $WEBSITE *****" && pytest -n 1 --maillinuxjobber=True
+docker exec  $CONTAINER pytest -n 1 --maillinuxjobber=True

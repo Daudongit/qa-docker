@@ -19,8 +19,12 @@ step 1: build the image
 ```
 docker build -t your-image-tag-here your-directory-path-here
 ```
-step 2: create a container to run the test
+step 2: make runtest.sh executable
 ```
-docker run [-e "STAGE=int|stage"] [-e "WESITE=linuxjobber|chatscrum"] --name your-container-name your-image-tag-here
+sudo chmod +x runtest.sh
 ```
-Note from the above command if environment variable STAGE is not specify int will be use and if WEBSITE is not specify linuxjobber will be use
+step 3: create a container to run the test
+```
+sudo ./runtest.sh  [https://stage.linuxjobber.com]  [your-image-tag-here]
+```
+Note from the above command if [https://stage.linuxjobber.com] is not specify [https://int.linuxjobber.com] will be use and if [your-image-tag-here] is not specify [qaserver] will be use

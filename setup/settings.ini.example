@@ -1,5 +1,5 @@
 [site_to_test]
-url : website
+url : http://environment.website.com
 
 [config]
 debug : false
