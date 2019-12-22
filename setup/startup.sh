@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$WEBSITE" == "chatscrum" ]; then git checkout chatscrumqa; fi
+# if [ "$WEBSITE" == "chatscrum" ]; then git checkout chatscrumqa; fi
 
 /bin/pip3.6 install -r requirements.txt
 echo "*********** Testing $WEBSITE | $STAGE ***********************"
