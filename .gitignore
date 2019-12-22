@@ -7,5 +7,7 @@ db.sqlite3
 *.ini
 **.ini
 **/node_modules*
-test/**
+/.pytest_cache
+/setup/__pycache__
+test/*
 !logging.ini

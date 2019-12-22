@@ -13,8 +13,7 @@ RUN yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum -y update
 RUN yum -y install python36u \
                    python36u-pip \
-                   python36u-devel \
-                   git
+                   python36u-devel 
 
 # install headless chrome
 RUN curl -O  https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
@@ -32,22 +31,15 @@ RUN /bin/pip3.6 install beautifulsoup4
 RUN /bin/pip3.6 install lxml
 
 # download chromedriver
-# RUN mkdir /opt/chrome
 RUN curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip -d /bin
 
 # File and Folder
 RUN mkdir /qa/
 
-#create environment variables
-ENV WEBSITE=linuxjobber
-ENV STAGE=int
-
-# copy the testing python script
-# COPY test/qa/ /qa/
-
 #copy setup files
-COPY setup/ /qa/
+COPY setup/conftest.py /qa/
+COPY setup/startup.sh /qa/
 
 #make start.sh executable
 RUN chmod +x /qa/startup.sh
