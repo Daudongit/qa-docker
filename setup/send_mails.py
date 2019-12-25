@@ -55,7 +55,7 @@ def send_email_ses(
 
 
 def send():
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("Wrong format")
         print("Usage: send_mail.py int.linuxjobber.com")
         sys.exit(1)

@@ -39,6 +39,7 @@ RUN mkdir /qa/
 
 #copy setup files
 COPY setup/conftest.py /qa/
+COPY setup/send_mails.py /qa/
 COPY setup/startup.sh /qa/
 
 #make start.sh executable
