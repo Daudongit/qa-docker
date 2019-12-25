@@ -25,6 +25,9 @@ sudo chmod +x runtest.sh
 ```
 step 3: create a container to run the test
 ```
-sudo ./runtest.sh  [https://stage.linuxjobber.com]  [your-image-tag-here]
+sudo ./runtest.sh  [WEBSITE="https://stage.linuxjobber.com"] [DOCKER_IMAGE="your-image-tag-here"] [FULL_REPORT="True"]
 ```
-Note from the above command if [https://stage.linuxjobber.com] is not specify [https://int.linuxjobber.com] will be use and if [your-image-tag-here] is not specify [qaserver] will be use
+Note from the above command defalut value for those param if not specify
+ * WEBSITE="https://int.linuxjobber.com"
+ * DOCKER_IMAGE="qaserver"
+ * FULL_REPORT="False"
